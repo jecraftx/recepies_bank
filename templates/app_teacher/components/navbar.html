@@ -1,0 +1,35 @@
+<header>
+  <div class="collapse bg-dark" id="navbarHeader">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-md-7 py-4">
+          <h4 class="text-white">About  <i> "Scrumptious" </i> </h4>
+          <p class="text-muted">A recipe is a set of instruction used for preparing and producing a certain food, dish, or drink. The purpose of a recipe is to have a precise record of the ingredients used, the amounts needed, and the way they are combined.</p>
+        </div>
+        <div class="col-sm-4 offset-md-1 py-4">
+          <h4 class="text-white">Contact</h4>
+          <ul class="list-unstyled">
+            <li><a href="https://github.com/jecraftx" class="text-white">Follow on GitHub</a></li>
+            <li><a href="https://www.instagram.com/craftxscience/" class="text-white">Like on Instagram</a></li>
+            <li><a href="rickyssson783@gmail.com" class="text-white">Email me</a></li>
+          </ul>
+          <div>
+            <a class="btn btn-outline-secondary" href="{% url 'login' %}"> Login </a>
+            <a class="btn btn-outline-secondary" href="{% url 'register' %}"> Register </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="navbar navbar-dark bg-dark shadow-sm">
+    <div class="container">
+      <a href="#" class="navbar-brand d-flex align-items-center">
+        <i class="fa-solid fa-utensils"></i> &nbsp;&nbsp;
+        <strong><i>Recepies</i></strong>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </div>
+</header>

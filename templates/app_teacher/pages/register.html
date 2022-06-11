@@ -1,0 +1,68 @@
+{% extends "app_teacher/components/base.html" %}
+{% load static %}
+{% load extras %}
+
+{% block head %}
+    <link rel="icon" href="{% static 'img/logo.png' %}" type="image/png">
+{% endblock head %}
+
+{% block title %}
+    Home Page
+{% endblock title %}
+
+{% block navbar %}
+    <div>
+      {% include 'app_teacher/components/navbar.html' %}
+    </div>
+{% endblock navbar %}
+
+
+{% block main %}
+<main class="d-flex justify-content-center mt-5 form-signin container text-center">
+    <form
+        action="{% url 'register' %}"
+        method="POST"
+        enctype="multipart/form-data"
+        target="_self"
+        class="form-control form-control-lg m-1 p-1"
+        style="width: 700px"
+    >
+      {% csrf_token %}
+
+    <img class="mb-4" src="{% static 'img/logo.png' %}" alt="" width="100" height="100">
+    <h1 class="h3 mb-3 fw-normal">Registration</h1>
+
+    <div class="form-floating">
+      <input type="text" class="form-control" id="floatingInput" placeholder="введите имя пользователя" name="username" required>
+      <label for="floatingInput">Username</label>
+    </div>
+    <div class="form-floating">
+      <input type="password" class="form-control" id="floatingPassword1" placeholder="Введите пароль" name="password" required>
+      <label for="floatingPassword1">Password</label>
+    </div>
+    <div class="form-floating">
+      <input type="password" class="form-control" id="floatingPassword2" placeholder="Повторите введёный пароль" name="password2" required>
+      <label for="floatingPassword2">Repeat password</label>
+    </div>
+
+    <div class="form-floating">
+      <input type="text" class="form-control" id="floatingPassword3" placeholder="Имя" name="first_name">
+      <label for="floatingPassword2">First name</label>
+    </div>
+    <div class="form-floating">
+      <input type="text" class="form-control" id="floatingPassword4" placeholder="Фамилия" name="last_name">
+      <label for="floatingPassword2">Second name</label>
+    </div>
+    <div class="form-floating">
+      <input type="email" class="form-control" id="floatingPassword5" placeholder="введите Вашу почту" name="email">
+      <label for="floatingPassword2">Email</label>
+    </div>
+
+    <button class="w-100 btn btn-lg btn-secondary" type="submit">Sign in</button>
+  </form>
+</main>
+{% endblock main %}
+
+{% block footer %}
+  {% include 'app_teacher/components/footer.html' %}
+{% endblock footer %}
