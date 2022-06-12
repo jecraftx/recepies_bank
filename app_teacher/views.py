@@ -1,15 +1,31 @@
+from multiprocessing import context
 from django.contrib.auth.hashers import make_password
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login as django_login
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import User
+
+from app_teacher import utils
 from . import models
 from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 from django.urls import reverse
 
+import app_teacher
+
+# def home(request):
+#     objects = models.Receipt.objects.all()
+#     count_object_on_one_page = 5
+#     current_page_from_request_parameter = request.GET.get('page')
+#     page_obj = utils.CustomPaginator.get_page(
+#         objs = objects,
+#         limit=count_object_on_one_page,
+#         current_page=current_page_from_request_parameter
+#     )
+#     context = {"list": None, "page": page_obj}
+#     return render(request, 'app_teacher/pages/home.html', context)
 
 def home(request, filter_category=""):
     if request.user.is_authenticated is False:

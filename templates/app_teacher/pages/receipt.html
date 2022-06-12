@@ -17,10 +17,11 @@
 {% endblock navbar %}
 
 {% block main %}
+<i class="fa-solid fa-angles-left"></i>
+<a class="text-decoration-none mx-auto p-1 text-dark" href="{% url 'home' %}">BACK</a>
 <main class="d-flex justify-content-center bg-light">
 <div class="album w-100  py-5 bg-light">
     <div class="container">
-
       <div class="row row-cols-2 row-cols-sm-2 row-cols-md-2 g-3 text-center d-flex justify-content-center">
           <div class="col">
             <div class="card shadow-sm text-center">
@@ -43,7 +44,6 @@
                         Intructions
                       </a>
                     {% endif %}
-
                   </div>
                   <small class="text-muted">{% time_convert receipt.time_to_cook 85 %}</small>
                 </div>

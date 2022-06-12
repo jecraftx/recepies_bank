@@ -18,6 +18,9 @@
 
 
 {% block main %}
+<i class="fa-solid fa-angles-left"></i>
+<a class="text-decoration-none mx-auto p-1 text-dark" href="{% url 'home' %}">BACK</a>
+
 <main class="d-flex justify-content-center mt-5 form-signin container text-center">
     <form
         action="{% url 'register' %}"

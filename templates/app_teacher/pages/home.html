@@ -3,7 +3,7 @@
 {% load extras %}
 
 {% block head %}
-    <link rel="icon" href="{% static 'img/logo512.png' %}" type="image/png">
+    <link rel="icon" href="{% static 'img/logo.png' %}" type="image/png">
 {% endblock head %}
 
 {% block title %}
@@ -17,16 +17,15 @@
 {% endblock navbar %}
 
 {% block main %}
-<main class="flex-shrink-0 bg-light">
-
-  
-
+<main class="flex-shrink-0">
+  <div class="mx-5 h5 text-secondary">
+    Recepies: {{receipt_count}}
+  </div>
   <section class="py-5 text-center container">
-    <div class="row py-lg-5">
+    <div class="row">
       <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">Recepies Bank <i class="btn btn-outline-success">{{receipt_count}}</i></h1>
-        <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
-        <p>
+        <!-- <h1 class="fw-light">Recepies Bank <i class="btn btn-outline-success">{{receipt_count}}</i></h1> -->
+        <img class="w-100" src="{% static 'img/logo1.png' %}" alt="">
           <a href="{% url 'home' %}" class="btn btn-primary my-2">All</a>
           {% for category in categories %}
 
@@ -51,7 +50,7 @@
     </div>
   </section>
 
-  <div class="album py-5 bg-light">
+  <div class="album py-5">
     <div class="container">
 
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 text-center d-flex justify-content-center">
@@ -93,20 +92,16 @@
                         Instruction
                       </a>
                     {% endif %}
-
                   </div>
                   <small class="text-muted">{% time_convert receipt.time_to_cook 85 %}</small>
                 </div>
               </div>
             </div>
           </div>
-
         {% endfor %}
-
       </div>
     </div>
   </div>
-
 </main>
 {% endblock main %}
 
