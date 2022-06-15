@@ -27,6 +27,7 @@
         <!-- <h1 class="fw-light">Recepies Bank <i class="btn btn-outline-success">{{receipt_count}}</i></h1> -->
         <img class="w-100" src="{% static 'img/logo1.png' %}" alt="">
           <a href="{% url 'home' %}" class="btn btn-primary my-2">All</a>
+          
           {% for category in categories %}
 
             <a href="{% url 'home' category.title %}"
@@ -74,7 +75,7 @@
               </a>
               <a href="{% url 'receipt' receipt.id %}" class="text-decoration-none text-dark">
                 {% if receipt.image %}
-                <img src="{{ receipt.image.url }}" alt="img" class="image-fluid" style="height:400px;width:400px;">
+                <img src="{{ receipt.image.url }}" alt="img" class="img-fluid" style="height:400px;width:400px;">
               {% else %}
                 <img src="{% static 'media/img/receipt/default/default_receipt.jpg' %}" alt="img">
               {% endif %}
