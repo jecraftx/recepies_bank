@@ -12,6 +12,20 @@ from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 from django.urls import reverse
 
+#paginator for home page
+def home(request):
+    objects = models.Receipt.objects.all()
+    count_object_on_one_page = 5
+    current_page_from_request_parameter = request.GET.get('page')
+    page_obj = utils.CustomPaginator.get_page(
+        objs=objects,
+        limit=count_object_on_one_page,
+        current_page=current_page_from_request_parameter
+    )
+    context = {"list": None, "page": page_obj}
+    return render(request, 'app_teacher/pages/home.html')
+
+    
 
 def home(request, filter_category=""):
     if request.user.is_authenticated is False:
@@ -69,19 +83,6 @@ def receipt(request, receipt_id):
 
     context = {"receipt": receipt, "comments": comments}
     return render(request, 'app_teacher/pages/receipt.html', context)
-
-#paginator for home page
-def home(request):
-    objects = models.Receipt.objects.all()
-    count_object_on_one_page = 5
-    current_page_from_request_parameter = request.GET.get('page')
-    page_obj = utils.CustomPaginator.get_page(
-        objs=objects,
-        limit=count_object_on_one_page,
-        current_page=current_page_from_request_parameter
-    )
-    context = {"list": None, "page": page_obj}
-    return render(request, 'app_teacher/pages/home.html')
 
 
 def receipt_comment_create(request, receipt_id: int):
