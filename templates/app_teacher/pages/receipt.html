@@ -76,8 +76,13 @@
                   <span class="fs-5 fw-semibold">Комментарии ({{comments.count}})</span>
                 </a>
               <div class="list-group list-group-flush border-bottom scrollarea">
-      
-                 {% for comment in comments %}
+              {% if not page %}
+              <div class="text-center">
+                  No data!
+              </div>
+                {% else %}
+              <!-- {% for i in page %} -->
+              {% for comment in comments %}
               <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
                 <div class="d-flex w-100 align-items-center justify-content-between">
                   {% if comment.user.is_superuser %}
@@ -89,10 +94,11 @@
                 </div>
                 <div class="col-10 mb-1 small">{{ comment.comment_text }}</div>
               </a>
-                {% endfor %}
+              {% endfor %}
                 </div>
               </div>
-
+              <!-- {% endfor %} -->
+            {% endif %}
             </div>
           </div>
         </div>
