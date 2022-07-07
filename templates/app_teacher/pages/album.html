@@ -1,0 +1,72 @@
+{% extends "app_teacher/components/base.html" %}
+{% load static %}
+{% load extras %}
+
+{% block head %}
+    <link rel="icon" href="{% static 'img/logo.png' %}" type="image/png">
+{% endblock head %}
+
+{% block title %}
+    Album Page
+{% endblock title %}
+
+{% block navbar %}
+    <div>
+      {% include 'app_teacher/components/navbar.html' %}
+    </div>
+{% endblock navbar %}
+
+{% block main %}
+<body>
+    <!-- Gallery -->
+<div class="row mx-0">
+    <div class="col-lg-4 col-md-12 mt-4 mb-4 mb-lg-0">
+      <img
+        src="{% static 'img/drink1.png' %}"
+        class="w-100 shadow-1-strong rounded mb-4"
+        alt="Boat on Calm Water"
+      />
+  
+      <img
+        src="{% static 'img/img6.png' %}"
+        class="w-100 shadow-1-strong rounded mb-4"
+        alt="Wintry Mountain Landscape"
+      />
+    </div>
+  
+    <div class="col-lg-4 mt-4 mb-4 mb-lg-0">
+      <img
+      src="{% static 'img/img1.png' %}"
+        class="w-100 shadow-1-strong rounded mb-4"
+        alt="Mountains in the Clouds"
+      />
+  
+      <img
+        src="{% static 'img/drink9.png' %}"
+        class="w-100 shadow-1-strong rounded mb-4"
+        alt="Boat on Calm Water"
+      />
+    </div>
+  
+    <div class="col-lg-4 mt-4 mb-4 mb-lg-0">
+      <img
+        src="{% static 'img/drink8.png' %}"
+        class="w-100 shadow-1-strong rounded mb-4"
+        alt="Waves at Sea"
+      />
+  
+      <img
+        src="{% static 'img/img4.png' %}"
+        class="w-100 shadow-1-strong rounded mb-4"
+        alt="Yosemite National Park"
+      />
+    </div>
+    
+  </div>
+  <!-- Gallery -->
+</body>
+{% endblock main %}
+
+{% block footer %}
+  {% include 'app_teacher/components/footer.html' %}
+{% endblock footer %}

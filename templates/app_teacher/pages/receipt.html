@@ -34,15 +34,14 @@
               {% endif %}
                 <div class="card-body">
                 <p class="card-text">{{ receipt.description }}</p>
+                
                 <div class="float-right">
                   <i class="fa-solid fa-thumbs-up m-1 float-right"></i> 
                   <i class="fa-solid fa-thumbs-down m-1 float-right"></i>
                 </div>
+
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <a href="{% url 'receipt' receipt.id %}" class="btn btn-sm btn-outline-primary">
-                        Details
-                      </a>
                     {% if receipt.instructions %}
                       <a href="{{ receipt.instructions.url }}" class="text-decoration-none btn btn-sm btn-outline-warning">
                         Intructions
@@ -76,12 +75,6 @@
                   <span class="fs-5 fw-semibold">Комментарии ({{comments.count}})</span>
                 </a>
               <div class="list-group list-group-flush border-bottom scrollarea">
-              {% if not page %}
-              <div class="text-center">
-                  No data!
-              </div>
-                {% else %}
-              <!-- {% for i in page %} -->
               {% for comment in comments %}
               <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
                 <div class="d-flex w-100 align-items-center justify-content-between">
@@ -93,12 +86,13 @@
                     <strong class="mb-1 text-muted">{{comment.time}}</strong>
                 </div>
                 <div class="col-10 mb-1 small">{{ comment.comment_text }}</div>
+                {% if request.user.is_superuser %}
+                <a href="{% url 'receipt_comment_delete' comment.id %}" class="text-danger text-right"><i class="fa-solid fa-trash"></i></a>
+                {% endif %}
               </a>
               {% endfor %}
                 </div>
               </div>
-              <!-- {% endfor %} -->
-            {% endif %}
             </div>
           </div>
         </div>

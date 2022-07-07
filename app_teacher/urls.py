@@ -1,5 +1,5 @@
 from django.urls import path
-from app_teacher.views import login, home, register, api_result, api_result_id
+from app_teacher.views import album, login, home, register, api_result, api_result_id
 from app_teacher import views
 
 
@@ -10,9 +10,12 @@ urlpatterns = [
 
     path(route='receipt/<int:receipt_id>/', view=views.receipt, name="receipt"),
     path(route='receipt/<int:receipt_id>/comment_create/', view=views.receipt_comment_create, name="receipt_comment_create"),
+    path(route='receipt/<int:comment_id>/comment_delete/', view=views.receipt_comment_delete, name="receipt_comment_delete"),
+    path(route='receipt/<int:receipt_id>/like_create/', view=views.receipt_like_create, name="receipt_like_create"),
 
     path(route='login/', view=login, name="login"),
     path(route='register/', view=register, name="register"),
+    path(route='album/', view=album, name="album"),
 
     # читаем все рецепты
     path(route='api/result/', view=api_result, name="api_result"),

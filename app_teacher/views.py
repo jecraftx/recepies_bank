@@ -25,7 +25,8 @@ def home(request):
     context = {"list": None, "page": page_obj}
     return render(request, 'app_teacher/pages/home.html')
 
-    
+def album(request):
+    return render(request, 'app_teacher/pages/album.html')
 
 def home(request, filter_category=""):
     if request.user.is_authenticated is False:
@@ -84,6 +85,34 @@ def receipt(request, receipt_id):
     context = {"receipt": receipt, "comments": comments}
     return render(request, 'app_teacher/pages/receipt.html', context)
 
+def receipt_like_create(request, receipt_id: int):
+    # if request.method == "POST":
+    #     comment_text = request.POST.get("comment_text", "")
+    #     if comment_text:
+    #         models.ReceiptComment.objects.create(
+    #             comment_text=comment_text,
+    #             user=request.user,
+    #             receipt=models.Receipt.objects.get(id=receipt_id),
+    #         )
+
+    try:
+        obj = models.ReceiptRating.objects.filter(
+            user=request.user,
+            receipt=models.Receipt.objects.get(id=receipt_id),
+        )[0]
+        print(obj)
+        obj.is_liked = not obj.is_liked
+        obj.rating_value = 0
+        obj.save()
+    except Exception as error:
+        models.ReceiptRating.objects.create(
+            is_liked=True,
+            rating_value=0,
+            user=request.user,
+            receipt=models.Receipt.objects.get(id=receipt_id),
+        )
+
+    return redirect(reverse('receipt', args=(receipt_id,)))
 
 def receipt_comment_create(request, receipt_id: int):
 
@@ -97,6 +126,26 @@ def receipt_comment_create(request, receipt_id: int):
             )
 
     return redirect(reverse('receipt', args=(receipt_id, )))
+
+def receipt_comment_delete(request, comment_id: int):
+    comment = models.ReceiptComment.objects.get(id=comment_id)  # Django ORM
+    # f"""
+    # SELECT *
+    # FROM ReceiptComment.db
+    # WHERE id = {comment_id}
+    # """
+    receipt_id = comment.receipt.id
+    comment_author_username = comment.user.username
+    print(comment_author_username)
+    # recept_author_username = comment.receipt.author.username
+    # print(recept_author_username)
+    print(comment_author_username)
+    print(comment.receipt.title)
+    print(comment.receipt.description)
+    print(receipt_id)
+    comment.delete()
+
+    return redirect(reverse('receipt', args=(receipt_id,)))
 
 
 
